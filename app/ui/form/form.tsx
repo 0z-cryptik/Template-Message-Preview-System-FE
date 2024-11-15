@@ -14,7 +14,7 @@ export const Form = () => {
     setLoading
   } = useList();
 
-  let server: string =
+  const server: string =
     process.env.NEXT_PUBLIC_SERVER ?? "http://localhost:8080/server";
 
   const handleSubmit = async (e: React.FormEvent) => {
