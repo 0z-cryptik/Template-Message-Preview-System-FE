@@ -38,6 +38,7 @@ export const Form = () => {
       setPreview(responseJson.message);
     } catch (err) {
       setErrorMessage("Error communicating with server, please try again");
+      console.error(err)
     } finally {
       setLoading(false);
     }
