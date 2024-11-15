@@ -2,7 +2,7 @@
 
 import { useContext, createContext, useState } from "react";
 
-import { StateContext, GlobalState, PayLoad } from "./types";
+import { StateContext, GlobalState, PayLoad } from "../types/stateTypes";
 
 const stateContext = createContext<StateContext | undefined>(undefined);
 
