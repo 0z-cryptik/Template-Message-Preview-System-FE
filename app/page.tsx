@@ -1,12 +1,15 @@
 "use client";
 
 import { Form } from "./ui/form";
+import { StateProvider } from "./stateManagement/state";
 
 const Home = () => {
   return (
-    <main className="flex items-center justify-center h-screen">
-      <Form />
-    </main>
+    <StateProvider>
+      <main className="flex items-center justify-center h-screen">
+        <Form />
+      </main>
+    </StateProvider>
   );
 };
 

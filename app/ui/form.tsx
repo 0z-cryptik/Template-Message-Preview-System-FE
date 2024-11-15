@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import { useList } from "../stateManagement/state";
 
 export const Form = () => {
-  const [template, setTemplate] = useState("");
-  const [variables, setVariables] = useState<string[]>([]);
-  const [payloadObj, setPayloadObj] = useState<{
-    [key: string]: string;
-  }>({});
+  const {
+    template,
+    variables,
+    payloadObj,
+    setTemplate,
+    setVariables,
+    setPayloadObj
+  } = useList();
 
   const extractVariables = () => {
     const variablePattern: RegExp = /{{(.*?)}}/g;
@@ -42,10 +45,10 @@ export const Form = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("someURL", {
+      const response = await fetch("http://localhost:8080/server", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payloadObj)
+        body: JSON.stringify({ payloadObj, template })
       });
 
       const responseJson = await response.json();
@@ -85,7 +88,7 @@ export const Form = () => {
               className="mt-3">
               <label htmlFor={variable}>{variable}: </label>
               <input
-                className="border mb-3"
+                className="border mb-3 text-sm"
                 name={variable}
                 id={variable}
                 onChange={updatePayload}
