@@ -14,7 +14,13 @@ export const Form = () => {
     setLoading
   } = useList();
 
-  const server = process.env.SERVER || "http://localhost:8080/server"
+  let server: string;
+
+  if (process.env.SERVER) {
+    server = process.env.SERVER;
+  } else {
+    server = "http://localhost:8080/server";
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,7 +44,7 @@ export const Form = () => {
       setPreview(responseJson.message);
     } catch (err) {
       setErrorMessage("Error communicating with server, please try again");
-      console.error(err)
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -54,4 +60,3 @@ export const Form = () => {
     </form>
   );
 };
-
