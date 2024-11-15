@@ -1,6 +1,6 @@
 "use client";
 
-import { Form } from "./ui/form";
+import { Form } from "./ui/form/form";
 import { StateProvider } from "./stateManagement/state";
 
 const Home = () => {
