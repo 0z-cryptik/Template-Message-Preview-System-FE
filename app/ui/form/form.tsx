@@ -14,13 +14,15 @@ export const Form = () => {
     setLoading
   } = useList();
 
+  const server = process.env.SERVER || "http://localhost:8080/server"
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setPreview("");
 
     try {
-      const response = await fetch("http://localhost:8080/server", {
+      const response = await fetch(server, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ payloadObj, template })
