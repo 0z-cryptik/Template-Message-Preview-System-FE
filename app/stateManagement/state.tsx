@@ -20,17 +20,25 @@ export const StateProvider: React.FC<GlobalState> = ({ children }) => {
   const [template, setTemplate] = useState("");
   const [variables, setVariables] = useState<string[]>([]);
   const [payloadObj, setPayloadObj] = useState<PayLoad>({});
-  const [showSubmitButton, setShowSubmitButton] = useState(false)
+  const [showSubmitButton, setShowSubmitButton] = useState(false);
+  const [preview, setPreview] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const stateObj = {
     template,
     variables,
     payloadObj,
     showSubmitButton,
+    preview,
+    errorMessage,
+    loading,
     setTemplate,
     setVariables,
     setPayloadObj,
-    setShowSubmitButton
+    setShowSubmitButton,
+    setPreview,
+    setErrorMessage, setLoading
   };
 
   return (

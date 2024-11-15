@@ -1,7 +1,7 @@
 import { useList } from "@/app/stateManagement/state";
 
 export const VariablesInput = () => {
-  const { variables, setPayloadObj } = useList();
+  const { variables, payloadObj, setPayloadObj } = useList();
 
   // here the payload object is updated with the values inputed on the browser
   const updatePayload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +23,10 @@ export const VariablesInput = () => {
             className="mt-3">
             <label htmlFor={variable}>{variable}: </label>
             <input
-              className="border mb-3 text-sm"
+              className="border mb-3 text-sm bg-transparent"
               name={variable}
               id={variable}
+              value={payloadObj[variable]}
               onChange={updatePayload}
             />
           </div>

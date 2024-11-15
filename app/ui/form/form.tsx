@@ -2,12 +2,22 @@ import { useList } from "../../stateManagement/state";
 import { SubmitButton } from "./submitButton";
 import { TemplateInput } from "./templateInput";
 import { VariablesInput } from "./variablesInput";
+import { ServerResponse } from "./responseType";
 
 export const Form = () => {
-  const { template, payloadObj, showSubmitButton } = useList();
+  const {
+    template,
+    payloadObj,
+    showSubmitButton,
+    setPreview,
+    setErrorMessage,
+    setLoading
+  } = useList();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setPreview("");
 
     try {
       const response = await fetch("http://localhost:8080/server", {
@@ -16,10 +26,19 @@ export const Form = () => {
         body: JSON.stringify({ payloadObj, template })
       });
 
-      const responseJson = await response.json();
+      const responseJson: ServerResponse = await response.json();
+
+      if (!responseJson.ok) {
+        setErrorMessage(responseJson.message);
+        return;
+      }
+
+      setPreview(responseJson.message);
       console.log(responseJson);
     } catch (err) {
-      console.error("error submitting form", err);
+      setErrorMessage("Error communicating with server, please try again");
+    } finally {
+      setLoading(false);
     }
   };
 

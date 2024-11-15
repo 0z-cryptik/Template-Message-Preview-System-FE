@@ -34,7 +34,7 @@ export const TemplateInput = () => {
       <label htmlFor="template">Template: </label>
       <input
         id="template"
-        className="border outline-none p-2"
+        className="border outline-none p-2 bg-transparent"
         value={template}
         onChange={(e) => {
           setTemplate(e.target.value);
@@ -45,8 +45,10 @@ export const TemplateInput = () => {
         className="bg-blue-300 rounded-md p-3 text-sm ml-2"
         onClick={(e) => {
           e.preventDefault();
-          extractVariables();
-          setShowSubmitButton(true);
+          if (template !== "") {
+            extractVariables();
+            setShowSubmitButton(true);
+          }
         }}>
         Set template
       </button>
