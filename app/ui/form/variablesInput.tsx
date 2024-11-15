@@ -15,15 +15,15 @@ export const VariablesInput = () => {
   };
 
   return (
-    <>
+    <div className="mt-5">
       {variables.map((variable, i) => {
         return (
           <div
             key={i}
-            className="mt-3">
+            className="mt-3 flex flex-row">
             <label htmlFor={variable}>{variable}: </label>
             <input
-              className="border mb-3 text-sm bg-transparent"
+              className="border mb-3 text-sm bg-transparent w-full ml-2"
               name={variable}
               id={variable}
               value={payloadObj[variable]}
@@ -32,6 +32,6 @@ export const VariablesInput = () => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };

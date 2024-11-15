@@ -32,7 +32,7 @@ export const Form = () => {
         setErrorMessage(responseJson.message);
         return;
       }
-      
+
       setPreview(responseJson.message);
     } catch (err) {
       setErrorMessage("Error communicating with server, please try again");
@@ -44,7 +44,7 @@ export const Form = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border p-6">
+      className="border p-2 sm:p-6 max-sm:w-[90%]">
       <TemplateInput />
       <VariablesInput />
       {showSubmitButton && <SubmitButton />}

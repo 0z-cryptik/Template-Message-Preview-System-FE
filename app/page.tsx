@@ -7,7 +7,7 @@ import { StateProvider } from "./stateManagement/state";
 const Home = () => {
   return (
     <StateProvider>
-      <main className="flex flex-col gap-[1.5rem] bg-black text-white items-center justify-center h-screen">
+      <main className="flex flex-col gap-[1.5rem] max-sm:text-sm bg-black text-white items-center justify-center h-screen">
         <Form />
         <Preview />
       </main>
