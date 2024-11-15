@@ -2,7 +2,7 @@ import { useList } from "../../stateManagement/state";
 import { SubmitButton } from "./submitButton";
 import { TemplateInput } from "./templateInput";
 import { VariablesInput } from "./variablesInput";
-import { ServerResponse } from "./responseType";
+import { ServerResponse } from "../../types/responseType";
 
 export const Form = () => {
   const {
