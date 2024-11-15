@@ -32,9 +32,8 @@ export const Form = () => {
         setErrorMessage(responseJson.message);
         return;
       }
-
+      
       setPreview(responseJson.message);
-      console.log(responseJson);
     } catch (err) {
       setErrorMessage("Error communicating with server, please try again");
     } finally {
